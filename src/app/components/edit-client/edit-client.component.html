@@ -78,7 +78,7 @@
                 <label for="balance">Balance</label>
                 <input type="text" class="form-control" name="balance" ngModel
                     [ngClass]="{'is-invalid':clientBalance.errors && clientBalance.touched}"
-                    #clientBalance="ngModel" minlength="2" required 
+                    #clientBalance="ngModel" minlength="2" required [disabled]="disableBalanceOnEdit"
                     >
             </div>
 
