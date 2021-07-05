@@ -38,11 +38,22 @@ export class ClientDetailsComponent implements OnInit {
     })
   }
 
-  updateBalance(){
+  updateBalance() {
     this.clientService.updateClient(this.client);
     this.flashMessage.show('Balance has been updated', {
       cssClass: 'alert-success', timeout: 3000
-    });    
+    });
+  }
+
+  onDeleteClick() {
+    if (confirm('Are you sure?')) {
+      this.clientService.deleteClient(this.client);
+
+      this.flashMessage.show('Client Removed', {
+        cssClass: 'alert-success', timeout: 3000
+      });
+      this.router.navigate(['/'])
+    }
   }
 
 }
