@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "clientpanel-tutorial": {
+      "hosting": {
+        "clientpanel": [
+          "clientpanel-tutorial"
+        ]
+      }
+    }
+  }
+}
