@@ -18,12 +18,33 @@
     
     <div class="card-body">
         <div class="row">
-            <div class="col-md-8 col-sm-6">
+            <div class="col-md-8">
                 <h4>Client ID: {{ client.id }}</h4>
             </div>
 
-            <div class="col-md-8 col-sm-6">
-                Balance: {{ client.balance }}                
+            <div class="col-md-8">
+               <h3 class="pull-right">
+                Balance
+                <span 
+                [class.text-danger]="hasBalance"
+                [class.text-success]="!hasBalance"
+                >
+                    {{ client.balance | currency }}
+                </span>
+                <small>
+                    <a (click)="showBalanceUpdateInput = !showBalanceUpdateInput"><i class="fa fa-pencil"></i></a>
+                </small>
+               </h3>        
+               <div class="clearfix">
+                   <form *ngIf="showBalanceUpdateInput" (submit)="updateBalance()">
+                       <div class="input-group">
+                           <input type="text" name="balance" class="form-control" [(ngModel)]="client.balance">
+                           <span class="input-group-btn">
+                               <button type="submit" class="btn btn-primary">Update</button>
+                           </span>
+                       </div>
+                   </form>
+               </div>      
             </div>
         </div>
         <hr>
@@ -36,6 +57,4 @@
             </li>
         </ul>
     </div>
-
-
 </div>
